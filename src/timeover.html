@@ -5,24 +5,28 @@
 	<title>timeover</title>
 	<style>
            *{margin:0;padding:0;}
-           .box{width:100%;height:400px;background:#090;position:relative;left:0;top:0;}
+           .box{width:100%;height:400px;background:#111;position:relative;left:0;top:0;}
+           .dot{position:absolute;left:413px;top:80px;color:yellow;font-size:160px;font-weight: bold;}
+           .dotr{position:absolute;left:870px;top:80px;color:yellow;font-size:160px;font-weight: bold;}
            .hl{width:200px;height:400px;position:absolute;#border:1px solid red;left:10px;top:0;}
            .hr{width:200px;height:400px;position:absolute;#border:1px solid blue;left:220px;top:0;}
-           .ml{width:200px;height:400px;position:absolute;#border:1px solid red;left:430px;top:0;}
-           .mr{width:200px;height:400px;position:absolute;#border:1px solid red;left:640px;top:0;}
-           .sl{width:200px;height:400px;position:absolute;#border:1px solid red;left:850px;top:0;}
-           .sr{width:200px;height:400px;position:absolute;#border:1px solid red;left:1060px;top:0;}
-           .one{width:2px;height:150px;background:#111;position:absolute;left:10px;top:20px;display:none;}
-           .two{width:2px;height:150px;background:#111;position:absolute;left:190px;top:20px;display:none;}
-           .three{width:2px;height:150px;background:#111;position:absolute;left:10px;top:190px;display:none;}
-           .four{width:2px;height:150px;background:#111;position:absolute;left:190px;top:190px;display:none;}
-           .five{width:160px;height:2px;background:#111;position:absolute;left:20px;top:20px;display:none;}
-           .six{width:160px;height:2px;background:#111;position:absolute;left:20px;top:180px;display:none;}
-           .seven{width:160px;height:2px;background:#111;position:absolute;left:20px;top:340px;display:none;}
+           .ml{width:200px;height:400px;position:absolute;#border:1px solid red;left:475px;top:0;}
+           .mr{width:200px;height:400px;position:absolute;#border:1px solid red;left:678px;top:0;}
+           .sl{width:200px;height:400px;position:absolute;#border:1px solid red;left:934px;top:0;}
+           .sr{width:200px;height:400px;position:absolute;#border:1px solid red;left:1135px;top:0;}
+           .one{width:5px;height:150px;background:#090;position:absolute;left:10px;top:20px;display:none;}
+           .two{width:5px;height:150px;background:#090;position:absolute;left:190px;top:20px;display:none;}
+           .three{width:5px;height:150px;background:#090;position:absolute;left:10px;top:190px;display:none;}
+           .four{width:5px;height:150px;background:#090;position:absolute;left:190px;top:190px;display:none;}
+           .five{width:160px;height:5px;background:#090;position:absolute;left:20px;top:20px;display:none;}
+           .six{width:160px;height:5px;background:#090;position:absolute;left:20px;top:180px;display:none;}
+           .seven{width:160px;height:5px;background:#090;position:absolute;left:20px;top:340px;display:none;}
 	</style>
 </head>
 <body>
 	<div class="box">
+  <p class="dot">:</p>
+  <p class="dotr">:</p>
 		<div class="hl">
 			<span class="one"></span>
 			<span class="two"></span>
@@ -78,35 +82,56 @@
 			<span class="seven"></span>
 		</div>
 	</div>
+  <p>初始时间：</p><input class="start" type="text">
+  <p>结束时间：</p><input class="end" type="text">
+  <p class="go">go</p>
+
 </body>
 <script>
 function toDouble(num){
 	return num<10?'0'+num:num+'';
 }
 	window.onload=function(){
-		setInterval(function(){
-			var date=new Date();
-			var s=date.getSeconds();
-			var H=date.getHours();
-			var m=date.getMinutes();
-			document.title=s;
-			var arr=toDouble(H).split('');
-			var arr1=toDouble(m).split('');
-			var arr2=toDouble(s).split('');
-			var HR=document.querySelector('.hr');
-			var HL=document.querySelector('.hl');
-			var MR=document.querySelector('.mr');
-			var ML=document.querySelector('.ml');
-			var SR=document.querySelector('.sr');
-			var SL=document.querySelector('.sl');
-			hide(HR,arr[1]);
-			hide(HL,arr[0]);
-			hide(MR,arr1[1]);
-			hide(ML,arr1[0]);
-			hide(SR,arr2[1]);
-			hide(SL,arr2[0]);
-		},1000);
-		function hide(obj,num){
+    //计算秒
+    var oStart=document.querySelector('.start');
+    var oEnd=document.querySelector('.end');
+    var oGo=document.querySelector('.go');
+    var HR=document.querySelector('.hr');
+    var HL=document.querySelector('.hl');
+    var MR=document.querySelector('.mr');
+    var ML=document.querySelector('.ml');
+    var SR=document.querySelector('.sr');
+    var SL=document.querySelector('.sl');
+    var clock=null;
+    oGo.onclick=function(){
+      clearInterval(clock);
+          var startTime=oStart.value;
+          var endTime=oEnd.value;
+          var allTime=endTime-startTime;
+      clock=setInterval(function(){
+               allTime--;
+               if(allTime==0){
+                clearInterval(clock);
+               }
+          var D=parseInt(allTime/86400);
+          var all2=allTime%86400;
+          var H=parseInt(all2/3600);
+          var all3=all2%3600;
+          var M=parseInt(all3/60);
+          all3%=60;
+          var arr=toDouble(H).split('');
+          var arr1=toDouble(M).split('');
+          var arr2=toDouble(all3).split('');
+                show(HR,arr[1]);
+                show(HL,arr[0]);
+                show(MR,arr1[1]);
+                show(ML,arr1[0]);
+                show(SR,arr2[1]);
+                show(SL,arr2[0]);
+      },1000);
+    };
+    //显示
+		function show(obj,num){
 			var oS=obj.children;
             switch(num){
                  case '0':
