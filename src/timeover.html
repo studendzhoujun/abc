@@ -84,7 +84,7 @@
 		</div>
 	</div>
   <p>初始时间：</p><input class="start" type="text"><span>s</span>
-  <p>结束时间：</p><input class="end" type="text"><span>s</span>
+  <p>结束时间:</p><input class="end" type="text"><span>s</span>
   <p class="go">go</p>
 
 </body>
@@ -107,7 +107,7 @@ function toDouble(num){
     var oBox=document.querySelector('.box');
     var clock=null;
     oGo.onclick=function(){
-          var startTime=oStart.value;
+      var startTime=oStart.value;
           var endTime=oEnd.value;
       clearInterval(clock);
       oDot.style.display='block';
@@ -122,9 +122,6 @@ function toDouble(num){
            return;
           }
           var allTime=endTime-startTime;
-         /*  oDot.style.display='block';
-           oDotr.style.display='block';
-           clearInterval(clock);*/
           var D=parseInt(allTime/86400);
           var all2=allTime%86400;
           var H=parseInt(all2/3600);
