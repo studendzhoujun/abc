@@ -3,8 +3,10 @@
 ###studentzhoujun
 ####基于以往在开发项目中经常用到的函数封装(abc/src/js/st.js)
 # git 常用命令 
-* git clone 地址          clone项目
-* git branch              查看本地分支
+* git clone 地址          
+> clone项目
+* git branch              
+> 查看本地分支
 * git branch -r           查看远程分支
 * git checkout -b 分支名  新建分支且立即切换到新建的分支
 * git chekout  分支       切换到分支
