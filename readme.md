@@ -15,4 +15,6 @@
 
 # git 创建ignore文件
 
+`vim .gitignore`
+
 
