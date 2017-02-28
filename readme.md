@@ -13,7 +13,7 @@
 * git pull  origin 分支   (拉取最新代码)
 * git push origin         (将本地代码推送到远程仓库)
 
-# git 创建ignore文件
+# git 创建gitignore文件
 
 `vim .gitignore`
 
