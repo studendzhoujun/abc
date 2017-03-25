@@ -8,7 +8,7 @@
 * git branch -r           (查看远程分支)
 * git checkout -b 分支名  (新建分支且立即切换到新建的分支)
 * git chekout  分支       (切换到分支)
-* git add                 (添加到缓存区)
+* git add .                (添加所有改动到缓存区)
 * git commit -m “描述”    (将缓存提到本地仓库)
 * git pull  origin 分支   (拉取最新代码)
 * git push origin         (将本地代码推送到远程仓库)
