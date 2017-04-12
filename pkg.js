@@ -1,1 +1,1 @@
-{name:'zhou'}
+var pkg={name:'zhou'};
