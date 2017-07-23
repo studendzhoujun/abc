@@ -1,5 +1,4 @@
 
-![img](https://github.com/studendzhoujun/abc/blob/master/src/images/loading-1.gif)
 # git 常用命令 
 * git clone 地址          (clone项目)
 * git branch              (查看本地分支)
