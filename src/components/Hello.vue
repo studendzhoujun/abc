@@ -10,11 +10,20 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      temArr:[{state:[]},{state:[]},{state:[]},{state:[]}]
     }
   },
   created () {
-    console.log('haaaa')
+    for(let i=0;i<this.temArr.length;i++){
+         for(let j=0;j<5;j++){
+              if(j==0){ 
+                  this.temArr[i].state.push({state:true})
+              }else{
+                  this.temArr[i].state.push({state:false})
+              }
+         }
+    }
   }
 }
 </script>
